@@ -2,6 +2,7 @@
 using FlickFinder.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Identity.Client;
+using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
 using System.ComponentModel.DataAnnotations;
 
@@ -9,8 +10,6 @@ namespace FlickFinder.Controllers
 {
     public class MoviesController : Controller
     {
-
-
 
         private readonly IWrapperRepository _repo;
         private readonly HttpClient _httpClient;
@@ -21,7 +20,7 @@ namespace FlickFinder.Controllers
             _httpClient = httpClient;
         }
 
-
+        [HttpGet]
         public IActionResult Index()
         {
             return View();
@@ -30,24 +29,29 @@ namespace FlickFinder.Controllers
         [HttpPost]
         public async Task<IActionResult> Index([Required] string searchInput)
         {
-            searchInput = searchInput.Trim();
-            var response = await _httpClient.GetAsync($"http://www.omdbapi.com/?s={searchInput}&apikey=6cb64284");
-
-            if (response.IsSuccessStatusCode)
+            if (!searchInput.IsNullOrEmpty() && searchInput.Length >= 3)
             {
-                var data = await response.Content.ReadAsStringAsync();
+                TempData["SearchInput"] = searchInput;
+                searchInput = searchInput.Trim();
+                var response = await _httpClient.GetAsync($"http://www.omdbapi.com/?s={searchInput}&apikey=6cb64284");
 
+                if (response.IsSuccessStatusCode)
+                {
+                    try
+                    {
+                        var data = await response.Content.ReadAsStringAsync();
+                        SearchResult movies = JsonConvert.DeserializeObject<SearchResult>(data);
+                        return View(movies.Search.ToList());
+                    }
+                    catch
+                    {
+                        return View("NotFound");
+                    }
 
-                SearchResult movies = JsonConvert.DeserializeObject<SearchResult>(data);
-
-
-                return View(movies.Search.ToList());
+                }
             }
-            else
-            {
-
-            }
-
+            
+            //ViewBag.ErrorSearchInput = "Your input should be at least 3 characters";
             return View();
         }
 
@@ -55,8 +59,8 @@ namespace FlickFinder.Controllers
         [HttpGet]
         public async Task<IActionResult> Details(string id)
         {
-            var response = await _httpClient.GetAsync($"http://www.omdbapi.com/?i={id}&apikey=6cb64284");
-            if (response.IsSuccessStatusCode) 
+            var response = await _httpClient.GetAsync($"http://www.omdbapi.com/?i={id}&p=full&apikey=6cb64284");
+            if (response.IsSuccessStatusCode)
             {
                 var data = await response.Content.ReadAsStringAsync();
                 Movie movie = JsonConvert.DeserializeObject<Movie>(data);
@@ -66,9 +70,9 @@ namespace FlickFinder.Controllers
         }
     }
 
-    public class SearchResult  
+    public class SearchResult
     {
-        public Movie[] Search; 
+        public Movie[] Search;
         public int totalResults { get; set; }
         public bool Response { get; set; }
     }

@@ -14,6 +14,9 @@
 </div>*@
 <div class="row text-black">
     <div class="col-md-6">
+        <img src="@Model.Poster" class="img-fluid" />
+    </div>
+    <div class="col-md-6">
         <dl class="row">
             <dt class="col-sm-2">
                 @Html.DisplayNameFor(model => model.Title)
@@ -47,10 +50,7 @@
             </dd>
         </dl>
     </div>
-    <div class="col-md-6">
-        <img src="@Model.Poster" class="img-fluid" />
-    </div>
 </div>
 <div>
-    <a asp-action="Index" asp-route-id="">Back to List</a>
+    <a asp-action="Index" asp-route-id="@Model.Title">Back to List</a>
 </div>

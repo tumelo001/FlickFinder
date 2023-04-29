@@ -1,12 +1,17 @@
-﻿
+﻿@{
+
+}
 
 <div class="row">
     <form class="d-flex mx-auto mt-4 col-md-6" asp-action="Index" method="post">
         <div class="input-group">
-            <input class="form-control me-2" name="searchInput" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" asp-route-id="avatar" asp-controller="Movies"  type="submit" id="searchSubmit">
+            <input class="form-control me-2" name="searchInput" value=@TempData["SearchInput"] != null ? @TempData["SearchInput"] : ""
+                    placeholder="Search" aria-label="Search" minLength="3">
+
+            <button class="btn btn-outline-success" asp-controller="Movies" type="submit" id="searchSubmit">
                 <i class="fas fa-search"></i>
             </button>
         </div>
     </form>
+
 </div>
