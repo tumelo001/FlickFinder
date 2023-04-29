@@ -1,0 +1,40 @@
+/* Colors
+    #2D2727
+    #413543
+    #8F43EE
+    #F0EB8D
+*/
+
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+    max-width: 100%;
+    
+}
+
+body {
+    margin-bottom: 60px;
+    font-family: "Roboto", Arial, Helvetica, sans-serif;
+    background-color: white;
+    color: white;
+}
+
+/*Navigation bar*/
+
+header {
+    background-color: #413543;
+}
+
+.navbar-brand {
+    color: !important #F0EB8D;
+}

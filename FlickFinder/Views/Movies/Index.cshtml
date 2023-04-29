@@ -1,0 +1,26 @@
+﻿@model IEnumerable<Movie>
+
+@{
+    ViewData["Title"] = "Search Movies";
+}
+<partial name="_SearchBar"></partial>
+
+<div class="row mt-5">
+    @foreach (var movie in Model)
+    {
+        <div class="col-md-3 mb-3">
+            <a class="card rounded-2 text-decoration-none" style="width: 18rem;" asp-action="Details" asp-route-id="@movie.imdbID">
+                <img src="@movie.Poster" class="card-img-top " alt="@movie.Title image" height="370">
+                <div class="card-body">
+                    <div class="d-flex text-dark">
+                        <h5 class="card-title">@movie.Title</h5>
+                        <h7>@movie.Year</h7>
+                    </div>
+                    <p class="card-text">Helooooooo😂🔥</p>
+                </div>
+            </a>
+        </div>
+    }
+</div>
+
+

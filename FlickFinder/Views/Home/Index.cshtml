@@ -1,0 +1,56 @@
+﻿@model Movie
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<partial name="_SearchBar"></partial>
+
+    
+
+    @*<div class="row">
+        <div class="col-md-6">
+            <dl class="row">
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Title)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Title)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Genre)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Genre)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Year)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Year)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Rated)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Rated)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Genre)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Genre)
+                </dd>
+            </dl>
+        </div>
+        <div class="col-md-6">
+            <img src="@Model.Poster" class="img-fluid" />
+        </div>
+    </div>
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    <a asp-action="Index">Back to List</a>
+</div>*@
+

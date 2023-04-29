@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\FlickFinder.props" />
+</Project>
