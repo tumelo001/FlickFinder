@@ -52,6 +52,11 @@ namespace FlickFinder.Models
         [JsonProperty("imdbID")]
         public string imdbID { get; set; }
 
- 
+        [JsonProperty("Type")]
+        public string Type { get; set; }
+
+        [JsonProperty("imdbRating")]
+        public string imdbRating { get; set; }
+
     }
 }

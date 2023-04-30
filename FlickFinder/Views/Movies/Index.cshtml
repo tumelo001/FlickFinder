@@ -8,21 +8,32 @@
 {
     <div class="text-danger text-center mt-2">@ViewBag.ErrorSearchInput</div>
 }*@
-<div class="row mt-5">
+<div class="row mt-5 d-flex justify-content-center">
     @{
         if (Model != null)
         {
             foreach (var movie in Model)
             {
-                <div class="col-md-3 mb-3">
-                    <a class="card rounded-2 text-decoration-none cardHover" style="width: 18rem;" asp-action="Details" asp-route-id="@movie.imdbID">
-                        <img src="@movie.Poster" class="card-img-top " alt="@movie.Title image" height="370">
-                        <div class="card-body">
-                            <div class="d-flex text-dark">
-                                <h5 class="card-title">@movie.Title</h5>
-                                <h7>@movie.Year</h7>
+                movie.Type = movie.Type.Substring(0, 1).ToUpper() + movie.Type.Substring(1, movie.Type.Length - 1);
+                <div class="col-md-3 mb-3 ">
+                    <a class="text-decoration-none text-light" asp-action="Details" asp-route-id="@movie.imdbID">
+                        <div class="card rounded-3 cardHover border-0" style="width: 20rem;">
+                            <img src="@movie.Poster" class="card-img-top " alt="@movie.Title image" height="370">
+                            <div class="card-body ">
+                                <div class="card-title fs-4 mb-n2">
+                                    @{
+                                        string title = movie.Title.Length > 23 ? movie.Title.Substring(0, 23).ToString() + "..." : movie.Title;
+                                    }
+                                    @title
+                                </div>
+                                <span class="fw-light fs-6 text-muted">@movie.Year</span> |
+                                <span class="fw-light fs-6 text-muted">@movie.Type</span>
+                                <div class="mt-4">
+                                    <a class="btn btn-outline-warning" asp-action="Index"><i class="fa-solid fa-bookmark"></i> Add to WatchList</a>
+                                    <a class="btn btn-outline-warning" asp-action="Index"><i class="fa-solid fa-heart"></i></a>
+                                    <a class="btn btn-outline-warning" asp-action="Index"><i class="fa-solid fa-share"></i></a>
+                                </div>
                             </div>
-                            <p class="card-text">Helooooooo😂🔥</p>
                         </div>
                     </a>
                 </div>

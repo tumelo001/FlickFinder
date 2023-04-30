@@ -5,9 +5,12 @@
     #F0EB8D
 */
 
+
+
+
 html {
-  font-size: 14px;
-  color: black;
+    font-size: 14px;
+    color: black;
 }
 
 @media (min-width: 768px) {
@@ -25,23 +28,34 @@ html {
 
 body {
     margin-bottom: 60px;
-    font-family: "Roboto", Arial, Helvetica, sans-serif;
+    font-family: "Motserrat", Arial, Helvetica, sans-serif;
     background-color: white;
     color: white;
 }
 
 /*Navigation bar*/
 
-header {
-    background-color: #413543;
+header{
+    background-color: black;
 }
 
 .navbar-brand {
     color: !important #F0EB8D;
 }
+.banner-section img{
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+
+
 
 /* Movie Cards*/
-
 .cardHover:hover {
-    opacity: 0.75 ;
+    opacity: 0.75;
+}
+
+.cardHover, .details-movie-card {
+    background-color: black;
 }

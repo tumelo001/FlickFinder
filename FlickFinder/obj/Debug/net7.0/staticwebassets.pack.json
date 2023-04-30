@@ -13,6 +13,10 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\tumel\\OneDrive\\Desktop\\Projects\\FlickFinder\\FlickFinder\\wwwroot\\images\\Home\\homebanner.jpg",
+      "PackagePath": "staticwebassets\\images\\Home\\homebanner.jpg"
+    },
+    {
       "Id": "C:\\Users\\tumel\\OneDrive\\Desktop\\Projects\\FlickFinder\\FlickFinder\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "lRJUotEJBA+JVl6BLA8VxdaLsfc3ucH7StUxNY64KSg=",
+  "Hash": "jwa10DdhhbH8E4F6EH/2wh/wZfZnRDRltFKIDSzeIRg=",
   "Source": "FlickFinder",
   "BasePath": "_content/FlickFinder",
   "Mode": "Default",
@@ -83,6 +83,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\tumel\\OneDrive\\Desktop\\Projects\\FlickFinder\\FlickFinder\\wwwroot\\images\\Home\\homebanner.jpg",
+      "SourceId": "FlickFinder",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\tumel\\OneDrive\\Desktop\\Projects\\FlickFinder\\FlickFinder\\wwwroot\\",
+      "BasePath": "_content/FlickFinder",
+      "RelativePath": "images/Home/homebanner.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\Home\\homebanner.jpg"
     },
     {
       "Identity": "C:\\Users\\tumel\\OneDrive\\Desktop\\Projects\\FlickFinder\\FlickFinder\\wwwroot\\js\\site.js",
