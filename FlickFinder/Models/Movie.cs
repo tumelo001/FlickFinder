@@ -4,6 +4,21 @@ using Newtonsoft.Json;
 
 namespace FlickFinder.Models
 {
+    public class MovieIndex
+    {
+        [JsonProperty("id")]
+        public string MovieId { get; set; }
+
+        [JsonProperty("title")]
+        public string Title  { get; set; }
+
+        [JsonProperty("poster_path")]
+        public string Poster { get; set; }
+
+
+    }
+
+
 	public class Movie
 	{
         [JsonProperty("Title")]

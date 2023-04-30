@@ -1,4 +1,4 @@
-﻿@model Movie
+﻿@model IEnumerable<MovieIndex>
 
 @{
     ViewData["Title"] = "Home Page";
@@ -7,8 +7,38 @@
 
 <partial name="_SearchBar"></partial>
 
-<div>
-    <img src=""/>
-</div>    
+<h3 class="mt-5 text-black">New Releases</h3>
+
+<div class="row mt-2 d-flex justify-content-center">
+    @{
+        if (Model != null)
+        {
+            foreach (var movie in Model)
+            {
+               
+                <div class="col-md-3 mb-3 ">
+                    <a class="text-decoration-none text-light" asp-action="Details" asp-route-id="@movie.MovieId">
+                        <div class="card rounded-3 cardHover border-0" style="width: 20rem;">
+                            <img src="https://image.tmdb.org/t/p/w500/@movie.Poster" class="card-img-top " alt="@movie.Title image" height="370">
+                            <div class="card-body ">
+                                <div class="card-title fs-4 mb-n2">
+                                    @{
+                                        string title = movie.Title.Length > 19 ? movie.Title.Substring(0, 19).ToString() + "..." : movie.Title;
+                                    }
+                                    @title
+                                </div>
+                                <div class="mt-4">
+                                    <a class="btn btn-outline-warning" asp-action="Index"><i class="fa-solid fa-bookmark"></i> Add to WatchList</a>
+                                    <a class="btn btn-outline-warning" asp-action="Index"><i class="fa-solid fa-heart"></i></a>
+                                    <a class="btn btn-outline-warning" asp-action="Index"><i class="fa-solid fa-share"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            }
+        }
+    }
+</div>
 
 
