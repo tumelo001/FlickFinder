@@ -2,8 +2,8 @@
 
 namespace FlickFinder.Data
 {
-	public interface IMovieRepository : IRepositoryBase<Movie>
+	/*public interface IMovieRepository : IRepositoryBase<Movie>
 	{
 		
-	}
+	}*/
 }

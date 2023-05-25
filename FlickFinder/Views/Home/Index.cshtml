@@ -7,6 +7,16 @@
 
 <partial name="_SearchBar"></partial>
 
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-success alert-dismissible" role="alert">
+        <button type="button" class="btn-close"
+                data-bs-dismiss="alert" aria-label="Close">
+        </button>
+        @TempData["Message"]
+    </div>
+}
+
 <h3 class="mt-5 text-black">New Releases</h3>
 
 <div class="row mt-2 d-flex justify-content-center">
@@ -15,9 +25,9 @@
         {
             foreach (var movie in Model)
             {
-               
-                <div class="col-md-3 mb-3 ">
-                    <a class="text-decoration-none text-light" asp-action="Details" asp-route-id="@movie.MovieId">
+
+                <div class="col-md-3 col-sm-6 mb-3 ">
+                    <a class="text-decoration-none text-light" asp-controller="Movies" asp-action="Details" asp-route-id="@movie.MovieId">
                         <div class="card rounded-3 cardHover border-0" style="width: 20rem;">
                             <img src="https://image.tmdb.org/t/p/w500/@movie.Poster" class="card-img-top " alt="@movie.Title image" height="370">
                             <div class="card-body ">
@@ -28,7 +38,7 @@
                                     @title
                                 </div>
                                 <div class="mt-4">
-                                    <a class="btn btn-outline-warning" asp-action="Index"><i class="fa-solid fa-bookmark"></i> Add to WatchList</a>
+                                    <a class="btn btn-outline-warning" asp-controller="WatchList" asp-action="Add" asp-route-id="@movie.MovieId"><i class="fa-solid fa-bookmark"></i> Add to WatchList</a>
                                     <a class="btn btn-outline-warning" asp-action="Index"><i class="fa-solid fa-heart"></i></a>
                                     <a class="btn btn-outline-warning" asp-action="Index"><i class="fa-solid fa-share"></i></a>
                                 </div>
@@ -39,6 +49,58 @@
             }
         }
     }
+</div>
+
+<div id="carouselExampleIndicators" class="carousel slide mt-5" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+
+        @for (int i = 0; i < 20; i++)
+        {
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="@i" aria-label="Slide @i"></button>
+        }
+    </div>
+    <div class="carousel-inner">
+        @{
+            if (Model != null)
+            {
+                bool isActive = true;
+                foreach (var movie in Model)
+                {
+                    string sActive = "";
+
+                    <div class="carousel-item  @{sActive = isActive ? "active" : sActive; }">
+                        <a class="text-decoration-none text-light" asp-action="Details" asp-route-id="@movie.MovieId">
+                            <div class="card rounded-3 cardHover border-0" style="width: 20rem;">
+                                <img src="https://image.tmdb.org/t/p/w500/@movie.Poster" class="card-img-top " alt="@movie.Title image" height="370">
+                                <div class="card-body ">
+                                    <div class="card-title fs-4 mb-n2">
+                                        @{
+                                            string title = movie.Title.Length > 19 ? movie.Title.Substring(0, 19).ToString() + "..." : movie.Title;
+                                        }
+                                        @title
+                                    </div>
+                                    <div class="mt-4">
+                                        <a class="btn btn-outline-warning" asp-action="Index"><i class="fa-solid fa-bookmark"></i> Add to WatchList</a>
+                                        <a class="btn btn-outline-warning" asp-action="Index"><i class="fa-solid fa-heart"></i></a>
+                                        <a class="btn btn-outline-warning" asp-action="Index"><i class="fa-solid fa-share"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    isActive = false;
+                }
+            }
+        }
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
 </div>
 
 

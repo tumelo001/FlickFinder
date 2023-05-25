@@ -1,0 +1,45 @@
+﻿@model RegisterModel
+
+@{
+    ViewData["Title"] = "Register";
+    Layout = "_SignInRegister";
+}
+
+
+<div class="m-auto row text-light mb-5 border-1 rounded-3 bg-black w-75">
+    <div class="col-sm-6 px-5">
+        <div class="text-center">
+            <h2 class="my-2">Create an accout</h2>
+            <p class="mb-3">Please enter your credentials</p>
+        </div>
+        <form asp-action="Register" method="post">
+            <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+            <div class="mb-3">
+                <label class="form-label" asp-for="UserName"></label>
+                <input class="form-control" asp-for="UserName" type="text" />
+                <span class="text-danger" asp-validation-for="UserName"></span>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" asp-for="Email"></label>
+                <input class="form-control" asp-for="Email" type="email" />
+                <span class="text-danger" asp-validation-for="Email"></span>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" asp-for="Password"></label>
+                <input class="form-control" asp-for="Password" type="text" />
+                <span class="text-danger" asp-validation-for="Password"></span>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" asp-for="ConfirmPassword"></label>
+                <input class="form-control" asp-for="ConfirmPassword" type="text" />
+                <span class="text-danger" asp-validation-for="ConfirmPassword"></span>
+            </div>
+            <div class="my-5">
+                <button type="submit" class="btn btn-warning w-100">Register</button>
+            </div>
+        </form>
+    </div>
+    <div class="col-sm-6 p-0">
+        <img class="img-fluid h-100 w-100" src="~/images/Home/homebanner.jpg" style="object-fit:cover" />
+    </div>
+</div>

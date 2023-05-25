@@ -16,16 +16,20 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\tumel\OneDrive\Desktop\Projects\FlickFinder\FlickFinder
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/tumel/OneDrive/Desktop/Projects/FlickFinder/FlickFinder/Views/Account/LogIn.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dJbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tumel/OneDrive/Desktop/Projects/FlickFinder/FlickFinder/Views/Account/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/tumel/OneDrive/Desktop/Projects/FlickFinder/FlickFinder/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/tumel/OneDrive/Desktop/Projects/FlickFinder/FlickFinder/Views/Home/Result.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxSZXN1bHQuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/tumel/OneDrive/Desktop/Projects/FlickFinder/FlickFinder/Views/Home/View.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxWaWV3LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/tumel/OneDrive/Desktop/Projects/FlickFinder/FlickFinder/Views/Movies/Details.cshtml]
@@ -42,6 +46,18 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/tumel/OneDrive/Desktop/Projects/FlickFinder/FlickFinder/Views/Shared/_SearchBar.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9TZWFyY2hCYXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tumel/OneDrive/Desktop/Projects/FlickFinder/FlickFinder/Views/Shared/_SignInRegister.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9TaWduSW5SZWdpc3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tumel/OneDrive/Desktop/Projects/FlickFinder/FlickFinder/Views/WatchList/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2F0Y2hMaXN0XEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tumel/OneDrive/Desktop/Projects/FlickFinder/FlickFinder/Views/WatchList/Remove.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2F0Y2hMaXN0XFJlbW92ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/tumel/OneDrive/Desktop/Projects/FlickFinder/FlickFinder/Views/_ViewImports.cshtml]

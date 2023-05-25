@@ -6,7 +6,7 @@ namespace FlickFinder.Data
     {
         IQueryable<T> FindAll();
         IQueryable<T> GetByCondition(Expression<Func<T, bool>> expression);
-        T GetById(Guid id);
+        Task<T> GetById(int id);
         void Delete(T entity);
         void Create(T entity);
         void Update(T entity);

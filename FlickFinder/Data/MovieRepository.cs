@@ -2,7 +2,7 @@
 
 namespace FlickFinder.Data
 {
-	public class MovieRepository : RepositoryBase<Movie>, IMovieRepository
+	/*public class MovieRepository : RepositoryBase<Movie>, IMovieRepository
 	{
 		//private readonly AppDbContext _appDbContext;
 
@@ -11,5 +11,5 @@ namespace FlickFinder.Data
 				
 		}
 		
-	}
+	}*/
 }

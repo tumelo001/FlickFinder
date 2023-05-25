@@ -33,18 +33,33 @@
                             <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Privacy">Favourites</a>
                         </li>
                     </ul>
-                    <div class="dropdown">
-                        <a href="#" class="d-flex align-items-center text-white text-decoration-none" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-end bg-black text-small text-light shadow" aria-labelledby="dropdownUser1">
-                            <li class="dropdown-header fs-5">Tumelo</li>
-                            <li><a class="dropdown-item" href="#">Settings</a></li>
-                            <li><a class="dropdown-item" href="#">Profile</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Sign out</a></li>
-                        </ul>
-                    </div>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <div class="dropdown">
+                            <a href="#" class="d-flex align-items-center text-white text-decoration-none" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                                <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end bg-black text-small text-light shadow" aria-labelledby="dropdownUser1">
+                                <li class="dropdown-header fs-5">@User.Identity.Name</li>
+                                <li><a class="dropdown-item" href="#">Settings</a></li>
+                                <li><a class="dropdown-item" href="#">Profile</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li>
+                                    <form asp-controller="Account" asp-action="Logout" method="post">
+                                        <input class="dropdown-item" type="submit" value="Sign out" />
+                                    </form>
+                                </li>
+                            </ul>
+                        </div>
+                    }
+                    else
+                    {
+                        <div>
+
+                            <a class="btn btn-warning" asp-controller="Account" asp-action="LogIn">Sign In</a>
+                        </div>
+                    }
+
                 </div>
             </div>
         </nav>
@@ -60,7 +75,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2023 - FlickFinder 
+            &copy; 2023 - FlickFinder
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

@@ -8,7 +8,7 @@
             <input class="form-control me-2" name="searchInput" value=@TempData["SearchInput"] != null ? @TempData["SearchInput"] : ""
                     placeholder="Search" aria-label="Search" minLength="3">
 
-            <button class="btn btn-outline-success" asp-controller="Movies" type="submit" id="searchSubmit">
+            <button class="btn btn-outline-success" asp-controller="Movies" asp-route-id="Search" type="submit" id="searchSubmit">
                 <i class="fas fa-search"></i>
             </button>
         </div>

@@ -1,0 +1,8 @@
+﻿@model Movie
+
+
+<h4>You are about to remove @Model.Title from your watchList</h4>
+<form asp-action="Remove" method="post">
+    <a asp-action="Index" class="btn btn-secondary"><i class="fa-solid fa-backward"></i>Back</a>
+    <button class="btn btn-outline-warning" type="submit"><i class="fa-solid fa-remove"></i>Remove</button>
+</form>

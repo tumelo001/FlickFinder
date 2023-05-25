@@ -1,0 +1,40 @@
+﻿@model SignInModel
+
+@{
+    Layout = "_SignInRegister";
+    ViewData["Title"] = "Sign In";
+}
+
+<div class="m-auto row text-light mb-5 border-1 rounded-3 bg-black w-75">
+    <div class="col-sm-6 px-5">
+        <div class="text-center">
+            <h2 class="my-2">Welcome back</h2>
+            <p class="mb-3 ">Please enter your credentials</p>
+        </div>
+        <form  asp-action="LogIn" method="post">
+            <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+            <input type="hidden" asp-for="ReturnUrl" />
+            <div class="mb-3">
+                <label class="form-label" asp-for="Email"></label>
+                <input class="form-control w-100" asp-for="Email" type="email" />
+                <span class="text-danger" asp-validation-for="Email"></span>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" asp-for="Password"></label>
+                <input class="form-control w-100" asp-for="Password" type="text" />
+                <span class="text-danger" asp-validation-for="Password"></span>
+            </div>
+            <div class="mb-3 d-flex align-content-between">
+                <input class="form-check-inline" type="checkbox" asp-for="RememberMe"/><span>Remember me</span>
+                <a>Forgot password?</a>
+            </div>
+            <div class="my-5">
+                <button type="submit" class="btn btn-warning mb-5 w-100">Sign in</button>
+                <p>Don't have an account?<a asp-controller="Account" asp-action="Register">Sign up for free</a></p>
+            </div>
+        </form>
+    </div>
+    <div class="col-sm-6 p-0">
+        <img class="img-fluid h-100 w-100" src="~/images/Home/homebanner.jpg" style="object-fit:cover" />
+    </div>
+</div>

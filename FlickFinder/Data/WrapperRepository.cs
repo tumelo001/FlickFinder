@@ -3,9 +3,10 @@
     public class WrapperRepository : IWrapperRepository
     {
         private readonly AppDbContext _appDbContext;
-        private IMovieRepository _movie;
+        //private IMovieRepository _movie;
+        private IWatchListRepository _watchList;
 
-        public IMovieRepository Movie
+       /* public IMovieRepository Movie
         {
             get
             {
@@ -13,6 +14,16 @@
                     _movie = new MovieRepository(_appDbContext);
                 return _movie;
             }
+        }*/
+
+        public IWatchListRepository WatchList 
+        {
+            get
+            {
+                if (_watchList == null)
+                    _watchList = new WatchListRepository(_appDbContext);
+                return _watchList;
+            } 
         }
 
         public WrapperRepository(AppDbContext appDbContext)

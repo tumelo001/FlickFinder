@@ -1,13 +1,14 @@
 ﻿using FlickFinder.Controllers;
 using Newtonsoft.Json;
-
+using System.ComponentModel.DataAnnotations;
 
 namespace FlickFinder.Models
 {
     public class MovieIndex
     {
+        [Key]
         [JsonProperty("id")]
-        public string MovieId { get; set; }
+        public int MovieId { get; set; }
 
         [JsonProperty("title")]
         public string Title  { get; set; }
@@ -20,20 +21,31 @@ namespace FlickFinder.Models
 
 
 	public class Movie
-	{
-        [JsonProperty("Title")]
+    {
+
+        [Key]
+        [JsonProperty("id")]
+        public string MovieId { get; set; }
+
+        [JsonProperty("imdb_id")]
+        public string imdbID { get; set; }
+
+        [JsonProperty("title")]
         public string Title { get; set; }
 
-        [JsonProperty("Year")]
+        [JsonProperty("tagline")]
+        public string Tagline { get; set; }
+
+        [JsonProperty("release_date")]
         public string Year { get; set; }
 
         [JsonProperty("Rated")]
         public string Rated { get; set; }
 
-        [JsonProperty("Released")]
+        [JsonProperty("status")]
         public string Released { get; set; }
 
-        [JsonProperty("Runtime")]
+        [JsonProperty("runtime")]
         public string Runtime { get; set; }
 
         [JsonProperty("Genre")]
@@ -48,7 +60,7 @@ namespace FlickFinder.Models
         [JsonProperty("Actors")]
         public string Actors { get; set; }
 
-        [JsonProperty("Plot")]
+        [JsonProperty("overview")]
         public string Plot { get; set; }
 
         [JsonProperty("Language")]
@@ -60,18 +72,14 @@ namespace FlickFinder.Models
         [JsonProperty("Awards")]
         public string Awards { get; set; }
 
-        [JsonProperty("Poster")]
+        [JsonProperty("poster_path")]
         public string Poster { get; set; }
-
-        
-        [JsonProperty("imdbID")]
-        public string imdbID { get; set; }
 
         [JsonProperty("Type")]
         public string Type { get; set; }
 
         [JsonProperty("imdbRating")]
-        public string imdbRating { get; set; }
+        public string Rating { get; set; }
 
     }
 }

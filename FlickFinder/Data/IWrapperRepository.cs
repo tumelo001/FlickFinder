@@ -2,7 +2,8 @@
 {
     public interface IWrapperRepository
     {
-        IMovieRepository Movie { get; }
+        /*IMovieRepository Movie { get; }*/
+        IWatchListRepository WatchList { get; }
         void SaveChanges();
     }
 }

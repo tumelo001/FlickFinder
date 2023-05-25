@@ -1,4 +1,5 @@
-﻿using System.Linq.Expressions;
+﻿using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 
 namespace FlickFinder.Data
 {
@@ -11,19 +12,19 @@ namespace FlickFinder.Data
             _appDbContext = appDbContext;
         }
 
-        public void Create(T entity)
+        public async void Create(T entity)
         {
-            _appDbContext.Set<T>().Add(entity);
+           await _appDbContext.Set<T>().AddAsync(entity);
         }
 
-        public void Delete(T entity)
+        public  void Delete(T entity)
         {
-            _appDbContext.Set<T>().Remove(entity);
+             _appDbContext.Set<T>().Remove(entity);
         }
 
         public IQueryable<T> FindAll()
         {
-            return _appDbContext.Set<T>();
+            return  _appDbContext.Set<T>();
         }
 
         public IQueryable<T> GetByCondition(Expression<Func<T, bool>> expression)
@@ -31,9 +32,9 @@ namespace FlickFinder.Data
             return _appDbContext.Set<T>().Where(expression);
         }
 
-        public T GetById(Guid id)
+        public async Task<T> GetById(int id)
         {
-            return _appDbContext.Set<T>().Find(id);
+            return await _appDbContext.Set<T>().FindAsync(id);
         }
 
         public void Update(T entity)

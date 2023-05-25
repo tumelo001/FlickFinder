@@ -4,61 +4,8 @@
     ViewData["Title"] = Model.Title;
 }
 
-@*<div class="row text-black">
-    <div class="col-md-6">
-        <img src="@Model.Poster" class="img-fluid" />
-    </div>
-    <div class="col-md-6">
-        <dl class="row">
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Title)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Title)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Genre)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Genre)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Year)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Year)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Rated)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Rated)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Plot)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Plot)
-            </dd>
-        </dl>
-    </div>
-</div>
-<div>
-    <a asp-action="Index" asp-route-id="@Model.Title">Back to List</a>
-</div>*@
-
-
-
-
-
-
-
-
-
-
-
 <div class="d-flex details-movie-card rounded-3 mt-5">
-    <img src="@Model.Poster" alt="@Model.Title" />
+    <img src="https://image.tmdb.org/t/p/w500/@Model.Poster" alt="@Model.Title" />
     <div class="m-4">
         <h1>@Model.Title</h1>
         <div class="text-muted">
@@ -68,12 +15,12 @@
             <span>@Model.Genre</span>
         </div>
         <div class="text-warning my-3">
-            @if (Model.imdbRating != "N/A")
+            @if (Model.Rating != "N/A")
             {
-                @for (int i = 0; i < Convert.ToInt32(Math.Round(double.Parse(Model.imdbRating))); i++)
+                @for (int i = 0; i < Convert.ToInt32(Math.Round(double.Parse(Model.Rating))); i++)
                 {
                     <i class="fa-solid fa-star "></i>
-                }@for (int i = 0; i < 10 - Convert.ToInt32(Math.Round(double.Parse(Model.imdbRating))); i++)
+                }@for (int i = 0; i < 10 - Convert.ToInt32(Math.Round(double.Parse(Model.Rating))); i++)
                 {
                     <i class="fa-regular fa-star"></i>
                 }
@@ -85,14 +32,14 @@
         <p class="">Actors: @Model.Actors</p>
         </div>
         <div class="mt-4">
-            <a class="btn btn-outline-warning" asp-action="Index"><i class="fa-solid fa-bookmark"></i> Add to WatchList</a>
+            <a class="btn btn-outline-warning" asp-action="Index" asp-controller="WatchList" asp-route-id="@Model.MovieId"><i class="fa-solid fa-bookmark"></i> Add to WatchList</a>
             <a class="btn btn-outline-warning" asp-action="Index"><i class="fa-solid fa-heart"></i></a>
             <a class="btn btn-outline-warning" asp-action="Index"><i class="fa-solid fa-share"></i></a>
         </div>
     </div>
 </div>
 <div class="mt-5">
-    <a class="btn btn-warning" asp-action="Index" asp-route-id="@Model.Title">Back to List</a>
+    <a class="btn btn-warning" asp-action="Index" asp-controller="Home" asp-route-id="@Model.Title">Back to List</a>
 </div>
 
 
