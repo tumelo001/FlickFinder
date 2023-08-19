@@ -5,7 +5,7 @@ namespace FlickFinder.Models
 {
     public class AppUser : IdentityUser
     {
-        public byte[] AvatarImage { get; set; }  
+        public string AvatarImageURL { get; set; }  
 
         public IEnumerable<WatchList> WatchList { get; set; }
         public IEnumerable<UserGenre> UserGenres { get; set; }

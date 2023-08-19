@@ -21,10 +21,11 @@
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex ">
-                    <ul class="navbar-nav nav-pills flex-grow-1 justify-content-end pe-5">
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-end">
+                    <partial name="_SearchBar" class="flex-grow-1" />
+                    <ul class="navbar-nav nav-pills justify-content-end pe-5">
                         <li class="nav-item active">
-                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">WatchList</a>
+                            <a class="nav-link text-light" asp-area="" asp-controller="WatchList" asp-action="Index">WatchList</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Privacy">New Releases</a>
@@ -37,7 +38,7 @@
                     {
                         <div class="dropdown">
                             <a href="#" class="d-flex align-items-center text-white text-decoration-none" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
+                                <img profile-user="@User.Identity.Name" />
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end bg-black text-small text-light shadow" aria-labelledby="dropdownUser1">
                                 <li class="dropdown-header fs-5">@User.Identity.Name</li>

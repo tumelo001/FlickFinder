@@ -52,7 +52,7 @@ namespace FlickFinder.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Genre",
+                name: "Genres",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -61,7 +61,7 @@ namespace FlickFinder.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Genre", x => x.Id);
+                    table.PrimaryKey("PK_Genres", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -171,7 +171,7 @@ namespace FlickFinder.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Favourite",
+                name: "Favourites",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -181,9 +181,9 @@ namespace FlickFinder.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Favourite", x => x.Id);
+                    table.PrimaryKey("PK_Favourites", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Favourite_AspNetUsers_UserId",
+                        name: "FK_Favourites_AspNetUsers_UserId",
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id");
@@ -209,7 +209,7 @@ namespace FlickFinder.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "UserGenre",
+                name: "UserGenres",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -219,16 +219,16 @@ namespace FlickFinder.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_UserGenre", x => x.Id);
+                    table.PrimaryKey("PK_UserGenres", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_UserGenre_AspNetUsers_UserId",
+                        name: "FK_UserGenres_AspNetUsers_UserId",
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_UserGenre_Genre_GenreId",
+                        name: "FK_UserGenres_Genres_GenreId",
                         column: x => x.GenreId,
-                        principalTable: "Genre",
+                        principalTable: "Genres",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -273,18 +273,18 @@ namespace FlickFinder.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Favourite_UserId",
-                table: "Favourite",
+                name: "IX_Favourites_UserId",
+                table: "Favourites",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_UserGenre_GenreId",
-                table: "UserGenre",
+                name: "IX_UserGenres_GenreId",
+                table: "UserGenres",
                 column: "GenreId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_UserGenre_UserId",
-                table: "UserGenre",
+                name: "IX_UserGenres_UserId",
+                table: "UserGenres",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
@@ -312,10 +312,10 @@ namespace FlickFinder.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Favourite");
+                name: "Favourites");
 
             migrationBuilder.DropTable(
-                name: "UserGenre");
+                name: "UserGenres");
 
             migrationBuilder.DropTable(
                 name: "WatchList");
@@ -324,7 +324,7 @@ namespace FlickFinder.Migrations
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
-                name: "Genre");
+                name: "Genres");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");

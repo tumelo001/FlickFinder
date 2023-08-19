@@ -28,13 +28,13 @@ namespace FlickFinder.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Index([Required] string searchInput)
+        public async Task<IActionResult> Index([Required] string search)
         {
-            if (!searchInput.IsNullOrEmpty() && searchInput.Length >= 3)
+            if (!search.IsNullOrEmpty() && search.Length >= 3)
             {
-                TempData["SearchInput"] = searchInput;
-                searchInput = searchInput.Trim();
-                var response = await _httpClient.GetAsync($"https://api.themoviedb.org/3/search/movie?query={searchInput}&include_adult=false&language=en-US&page=1&api_key=ddaf2dd3a28f3f67bbfd39b53f1c066f");
+                TempData["SearchInput"] = search;
+                search = search.Trim();
+                var response = await _httpClient.GetAsync($"https://api.themoviedb.org/3/search/movie?query={search}&include_adult=false&language=en-US&page=1&api_key=ddaf2dd3a28f3f67bbfd39b53f1c066f");
 
                 if (response.IsSuccessStatusCode)
                 {

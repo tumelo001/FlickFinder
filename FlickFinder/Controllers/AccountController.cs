@@ -68,7 +68,8 @@ namespace FlickFinder.Controllers
                 var user = new AppUser
                 {
                     Email = registerModel.Email,
-                    UserName = registerModel.UserName
+                    UserName = registerModel.UserName,
+                    AvatarImageURL = registerModel.AvatarImageURL
                 };
 
                 var result = await _userManager.CreateAsync(user, registerModel.Password);

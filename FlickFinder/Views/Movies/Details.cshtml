@@ -3,9 +3,11 @@
 @{
     ViewData["Title"] = Model.Title;
 }
-
-<div class="d-flex details-movie-card rounded-3 mt-5">
-    <img src="https://image.tmdb.org/t/p/w500/@Model.Poster" alt="@Model.Title" />
+<div class="my-5">
+    <a class="btn btn-warning" asp-action="Index" asp-controller="Home" asp-route-id="@Model.Title">Back to List</a>
+</div>
+<div class="d-flex details-movie-card rounded-3 my-5">
+    <img src="@Model.Poster" alt="@Model.Title" class="rounded-start-3" />
     <div class="m-4">
         <h1>@Model.Title</h1>
         <div class="text-muted">
@@ -15,7 +17,7 @@
             <span>@Model.Genre</span>
         </div>
         <div class="text-warning my-3">
-            @if (Model.Rating != "N/A")
+            @if (Model.Rating != "N/A" && Model.Rating != null)
             {
                 @for (int i = 0; i < Convert.ToInt32(Math.Round(double.Parse(Model.Rating))); i++)
                 {
@@ -32,15 +34,13 @@
         <p class="">Actors: @Model.Actors</p>
         </div>
         <div class="mt-4">
-            <a class="btn btn-outline-warning" asp-action="Index" asp-controller="WatchList" asp-route-id="@Model.MovieId"><i class="fa-solid fa-bookmark"></i> Add to WatchList</a>
+            <a class="btn btn-outline-warning" asp-action="Add" asp-controller="WatchList" asp-route-id="@Model.MovieId"><i class="fa-solid fa-bookmark"></i> Add to WatchList</a>
             <a class="btn btn-outline-warning" asp-action="Index"><i class="fa-solid fa-heart"></i></a>
             <a class="btn btn-outline-warning" asp-action="Index"><i class="fa-solid fa-share"></i></a>
         </div>
     </div>
 </div>
-<div class="mt-5">
-    <a class="btn btn-warning" asp-action="Index" asp-controller="Home" asp-route-id="@Model.Title">Back to List</a>
-</div>
+
 
 
 

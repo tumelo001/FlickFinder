@@ -4,16 +4,19 @@ using FlickFinder.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
 namespace FlickFinder.Migrations
 {
-    [DbContext(typeof(AppIdentityDbContext))]
-    partial class AppIdentityDbContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(AppDbContext))]
+    [Migration("20230526172932_AddedProfileAvatarImages")]
+    partial class AddedProfileAvatarImages
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -30,8 +33,8 @@ namespace FlickFinder.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
-                    b.Property<byte[]>("AvatarImage")
-                        .HasColumnType("varbinary(max)");
+                    b.Property<string>("AvatarImageURL")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
@@ -108,7 +111,7 @@ namespace FlickFinder.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Favourite");
+                    b.ToTable("Favourites");
                 });
 
             modelBuilder.Entity("FlickFinder.Models.Genre", b =>
@@ -124,7 +127,7 @@ namespace FlickFinder.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Genre");
+                    b.ToTable("Genres");
                 });
 
             modelBuilder.Entity("FlickFinder.Models.UserGenre", b =>
@@ -147,7 +150,7 @@ namespace FlickFinder.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("UserGenre");
+                    b.ToTable("UserGenres");
                 });
 
             modelBuilder.Entity("FlickFinder.Models.WatchList", b =>

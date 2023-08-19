@@ -4,23 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace FlickFinder.Models
 {
-    public class MovieIndex
-    {
-        [Key]
-        [JsonProperty("id")]
-        public int MovieId { get; set; }
-
-        [JsonProperty("title")]
-        public string Title  { get; set; }
-
-        [JsonProperty("poster_path")]
-        public string Poster { get; set; }
-
-
-    }
-
-
-	public class Movie
+    public class Movie
     {
 
         [Key]
@@ -72,14 +56,31 @@ namespace FlickFinder.Models
         [JsonProperty("Awards")]
         public string Awards { get; set; }
 
+        private string _poster;
+
         [JsonProperty("poster_path")]
-        public string Poster { get; set; }
+        public string Poster
+        {
+            get
+            {
+                return _poster;
+            }
+            set
+            {
+                _poster = "https://image.tmdb.org/t/p/w500/" + value;
+                if (value == null)
+                    _poster = "/images/default.jpg";
+            }
+        }
 
         [JsonProperty("Type")]
         public string Type { get; set; }
 
         [JsonProperty("imdbRating")]
         public string Rating { get; set; }
+
+
+        public string Slug => Title?.Replace(" ", "+").ToLower() + "+" + Year.ToLower();
 
     }
 }

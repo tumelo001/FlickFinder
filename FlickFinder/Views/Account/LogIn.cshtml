@@ -12,7 +12,7 @@
             <p class="mb-3 ">Please enter your credentials</p>
         </div>
         <form  asp-action="LogIn" method="post">
-            <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+            <div class="text-danger" asp-validation-summary="All"></div>
             <input type="hidden" asp-for="ReturnUrl" />
             <div class="mb-3">
                 <label class="form-label" asp-for="Email"></label>
@@ -26,7 +26,7 @@
             </div>
             <div class="mb-3 d-flex align-content-between">
                 <input class="form-check-inline" type="checkbox" asp-for="RememberMe"/><span>Remember me</span>
-                <a>Forgot password?</a>
+                <a class="ms-3">Forgot password?</a>
             </div>
             <div class="my-5">
                 <button type="submit" class="btn btn-warning mb-5 w-100">Sign in</button>

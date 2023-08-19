@@ -17,6 +17,34 @@
       "PackagePath": "staticwebassets\\images\\Home\\homebanner.jpg"
     },
     {
+      "Id": "C:\\Users\\tumel\\OneDrive\\Desktop\\Projects\\FlickFinder\\FlickFinder\\wwwroot\\images\\Profile_Avatar\\pic_1.jpg",
+      "PackagePath": "staticwebassets\\images\\Profile_Avatar\\pic_1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\tumel\\OneDrive\\Desktop\\Projects\\FlickFinder\\FlickFinder\\wwwroot\\images\\Profile_Avatar\\pic_2.jpg",
+      "PackagePath": "staticwebassets\\images\\Profile_Avatar\\pic_2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\tumel\\OneDrive\\Desktop\\Projects\\FlickFinder\\FlickFinder\\wwwroot\\images\\Profile_Avatar\\pic_3.jpg",
+      "PackagePath": "staticwebassets\\images\\Profile_Avatar\\pic_3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\tumel\\OneDrive\\Desktop\\Projects\\FlickFinder\\FlickFinder\\wwwroot\\images\\Profile_Avatar\\pic_4.jpg",
+      "PackagePath": "staticwebassets\\images\\Profile_Avatar\\pic_4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\tumel\\OneDrive\\Desktop\\Projects\\FlickFinder\\FlickFinder\\wwwroot\\images\\Profile_Avatar\\pic_5.jpg",
+      "PackagePath": "staticwebassets\\images\\Profile_Avatar\\pic_5.jpg"
+    },
+    {
+      "Id": "C:\\Users\\tumel\\OneDrive\\Desktop\\Projects\\FlickFinder\\FlickFinder\\wwwroot\\images\\Profile_Avatar\\pic_6.jpg",
+      "PackagePath": "staticwebassets\\images\\Profile_Avatar\\pic_6.jpg"
+    },
+    {
+      "Id": "C:\\Users\\tumel\\OneDrive\\Desktop\\Projects\\FlickFinder\\FlickFinder\\wwwroot\\images\\default.jpg",
+      "PackagePath": "staticwebassets\\images\\default.jpg"
+    },
+    {
       "Id": "C:\\Users\\tumel\\OneDrive\\Desktop\\Projects\\FlickFinder\\FlickFinder\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },

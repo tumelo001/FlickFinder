@@ -34,6 +34,38 @@
                 <input class="form-control" asp-for="ConfirmPassword" type="text" />
                 <span class="text-danger" asp-validation-for="ConfirmPassword"></span>
             </div>
+            <div class="mb-3">
+                <label class="form-label">Pick your Avatar</label>
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="profilePictureDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img id="selectedImage" class="avatar-profile" src="/images/Profile_Avatar/pic_1.jpg" alt="Image 1">
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="profilePictureDropdown">
+                        <li><a class="dropdown-item" href="#" data-value="/images/Profile_Avatar/pic_2.jpg" onclick="changeImage(this)"><img class="avatar-profile" src="/images/Profile_Avatar/pic_2.jpg" alt="Image 2"></a></li>
+                        <li><a class="dropdown-item" href="#" data-value="/images/Profile_Avatar/pic_3.jpg" onclick="changeImage(this)"><img class="avatar-profile" src="/images/Profile_Avatar/pic_3.jpg" alt="Image 3"></a></li>
+                        <li><a class="dropdown-item" href="#" data-value="/images/Profile_Avatar/pic_4.jpg" onclick="changeImage(this)"><img class="avatar-profile" src="/images/Profile_Avatar/pic_4.jpg" alt="Image 4"></a></li>
+                        <li><a class="dropdown-item" href="#" data-value="/images/Profile_Avatar/pic_5.jpg" onclick="changeImage(this)"><img class="avatar-profile" src="/images/Profile_Avatar/pic_5.jpg" alt="Image 5"></a></li>
+                        <li><a class="dropdown-item" href="#" data-value="/images/Profile_Avatar/pic_6.jpg" onclick="changeImage(this)"><img class="avatar-profile" src="/images/Profile_Avatar/pic_6.jpg" alt="Image 6"></a></li>
+                        <!-- Add more image options as needed -->
+                    </ul>
+                </div>
+
+                <!-- Hidden input field to store the selected image URL -->
+                <input type="hidden" id="avatarUrl" asp-for="AvatarImageURL" name="AvatarImageURL" value="/images/Profile_Avatar/pic_1.jpg">
+
+                <script>
+                    function changeImage(element) {
+                        var selectedImage = element.getAttribute('data-value');
+                        var imageElement = document.getElementById('selectedImage');
+                        var avatarUrlInput = document.getElementById('avatarUrl');
+
+                        imageElement.src = selectedImage;
+                        avatarUrlInput.value = selectedImage;
+                    }
+                </script>
+
+            </div>
+
             <div class="my-5">
                 <button type="submit" class="btn btn-warning w-100">Register</button>
             </div>

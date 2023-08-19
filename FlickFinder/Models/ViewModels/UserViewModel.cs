@@ -21,6 +21,7 @@ namespace FlickFinder.Models.ViewModels
     {
         [Required]
         [UIHint("User name")]
+        [Display(Name = "Username")]
         public string UserName { get; set; }
 
         [Required]
@@ -36,6 +37,8 @@ namespace FlickFinder.Models.ViewModels
         [DataType(DataType.Password)]
         [DisplayName("Confirm Password")]
         public string ConfirmPassword { get; set; }
+
+        public string AvatarImageURL { get; set; } 
 
     }
 

@@ -1,0 +1,34 @@
+﻿@model Movie
+@{
+
+}
+
+<div class="col-md-2 col-sm-6 mb-3">
+    <a class="text-decoration-none text-light" asp-controller="Movies" asp-action="Details"
+       asp-route-id="@Model.MovieId" asp-route-slug="@Model.Slug">
+        <div class="card rounded-3 cardHover border-0">
+            <div class="position-relative">
+                <img src="@Model.Poster" class="card-img-top full-height-img" alt="@Model.Title image">
+                <div class="card-overlay">
+                    <div class="card-body">
+                        <div class="card-title fs-4 mb-n2">
+                            @Model.Title
+                        </div>
+                        <div class="mt-4">
+                            <a class="btn btn-outline-warning" title="Add to Watchlist"
+                               asp-controller="WatchList" asp-action="Add" asp-route-id="@Model.MovieId">
+                                <i class="fa-solid fa-bookmark"></i>
+                            </a>
+                            <a class="btn btn-outline-warning" title="Like" asp-action="Index">
+                                <i class="fa-solid fa-heart"></i>
+                            </a>
+                            <a class="btn btn-outline-warning" title="Share" asp-action="Index">
+                                <i class="fa-solid fa-share"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+</div>

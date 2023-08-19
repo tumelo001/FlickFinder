@@ -1,17 +1,23 @@
 ﻿@{
-
+    string searchInput = "";
 }
 
 <div class="row search-bar">
-    <form class="d-flex mx-auto mt-4 col-md-6" asp-action="Index" method="post">
+    <form class="d-flex" asp-action="Index" method="post">
         <div class="input-group">
-            <input class="form-control me-2" name="searchInput" value=@TempData["SearchInput"] != null ? @TempData["SearchInput"] : ""
+            <input class="form-control me-2" id="searchInput" name="search" value="@(TempData["SearchInput"] != null ? TempData["SearchInput"] : "")"
                     placeholder="Search" aria-label="Search" minLength="3">
 
-            <button class="btn btn-outline-success" asp-controller="Movies" asp-route-id="Search" type="submit" id="searchSubmit">
+            <button class="btn btn-outline-success" asp-controller="Movies" asp-route-search="@searchInput" 
+                    type="submit" id="searchSubmit" onclick="getSearchValue()">
                 <i class="fas fa-search"></i>
             </button>
         </div>
     </form>
-
 </div>
+<script type="text/javascript">
+    function getSearchValue() {
+        const searchInput = document.querySelector("#searchInput");
+        return searchInput.value;
+    }
+</script>
