@@ -89,11 +89,11 @@ header {
     color: #fff;
 }
 .carousel-control-next {
-    right: -150px;
+    right: -180px;
    /* background: linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%);*/
 }
 .carousel-control-prev {
-    left: -150px;
+    left: -180px;
     /*background: linear-gradient(-90deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%);*/
 }
 
@@ -109,4 +109,26 @@ header {
     height: 62px;
     border-radius: 50%;
     border: 2px solid white;
+}
+
+.details-button button {
+    color: #ffc107 !important;
+    border-color: #ffc107 !important;
+}
+
+.details-button .active {
+    color: black !important;
+    background-color: #ffc107 !important;
+    border-color: #ffc107 !important;
+}
+
+.details-nav-tabs .nav-tabs {
+    border-bottom: 1px solid #ffc107 !important;
+}
+
+.alert-login {
+    position: absolute;
+    top: -30px;
+    left: 30%;
+    padding: 12px 16px;
 }

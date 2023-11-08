@@ -1,0 +1,31 @@
+﻿@model ConfirmEmail
+
+@{
+    Layout = "_SignInRegister";
+    ViewData["Title"] = "Verify Email";
+}
+<div class="m-auto row text-light mb-5 border-1 rounded-3 bg-black w-75 position-relative">
+    <div class="col-sm-6 px-5">
+        @if (TempData["Message"] != null)
+        {
+            <div class="alert alert-success alert-dismissible fade show alert-login" role="alert">
+                <i class="fa-solid fa-check"></i>
+                @TempData["Message"]
+            </div>
+        }
+        <div class="my-3 text-center ">
+            <h2 class="">Verify your email</h2>
+        </div>
+        <form class="my-4" asp-action="VerifyEmail" asp-controller="Account" method="post">
+            <input type="hidden" asp-for="UserId" />
+            <input type="hidden" asp-for="Token" />
+            <div class="d-grid">
+                <button type="submit" class="btn btn-warning">Verify</button>
+            </div>
+        </form>
+        <a class=" text-decoration-none text-warning" asp-controller="Account" asp-action="Login"><i class="fa-solid fa-arrow-left fa-xl me-2 "></i>Back</a>
+    </div>
+    <div class="col-sm-6 p-0">
+        <img class="img-fluid h-100 w-100" src="~/images/Home/homebanner.jpg" style="object-fit:cover" />
+    </div>
+</div>

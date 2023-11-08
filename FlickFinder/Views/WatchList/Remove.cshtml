@@ -1,8 +1,10 @@
-﻿@model Movie
+﻿@model RemoveViewModel
+@{
+    ViewData["Title"] = "Remove from watchlist";
+}
 
-
-<h4>You are about to remove @Model.Title from your watchList</h4>
-<form asp-action="Remove" method="post">
-    <a asp-action="Index" class="btn btn-secondary"><i class="fa-solid fa-backward"></i>Back</a>
-    <button class="btn btn-outline-warning" type="submit"><i class="fa-solid fa-remove"></i>Remove</button>
+<h4 class="mt-5">You are about to remove "@Model.Title" from your watchlist</h4>
+<form asp-action="Remove" asp-route-id="@Model.Id" method="post" class="mt-5">
+    <a asp-action="Index" class="btn btn-warning"><i class="fa-solid fa-backward pe-2"></i>Back</a>
+    <button class="btn btn-outline-warning ms-3" type="submit"><i class="fa-solid fa-remove pe-2"></i>Remove</button>
 </form>

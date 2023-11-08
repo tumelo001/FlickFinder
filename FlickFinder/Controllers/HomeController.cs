@@ -1,12 +1,9 @@
-﻿
-using FlickFinder.Data;
+﻿using FlickFinder.Data;
+using FlickFinder.DTOs;
 using FlickFinder.Models;
 using FlickFinder.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-using System.Diagnostics;
 using System.Reflection;
 
 namespace FlickFinder.Controllers
@@ -15,6 +12,7 @@ namespace FlickFinder.Controllers
     {
         private readonly HttpClient _httpClient;
         private readonly IConfiguration _config;
+        private readonly IWrapperRepository _repo;
 
         protected class CategoryProp
         {
@@ -26,22 +24,22 @@ namespace FlickFinder.Controllers
         {
             new CategoryProp{ ApiName = @"trending/movie/week", PropName = "Trending"},
             new CategoryProp { ApiName = "now_playing", PropName = "NowPlaying" },
-            new CategoryProp { ApiName = "popular", PropName = "Popular" },
-            new CategoryProp { ApiName = "top_rated", PropName = "TopRated" },
-            new CategoryProp { ApiName = "upcoming", PropName = "Upcoming" }
+            new CategoryProp { ApiName = "top_rated", PropName = "TopRated" }
         };
 
-        public HomeController(HttpClient httpClient, IConfiguration config)
+        public HomeController(HttpClient httpClient, IConfiguration config, IWrapperRepository repo)
         {
             _httpClient = httpClient;
             _config = config;
+            _repo = repo;
         }
 
         [HttpGet]
         public async Task<IActionResult> Index()
         {
             MoviesHomePageViewModel model = new MoviesHomePageViewModel();
-            var ls = model.GetType().GetRuntimeFields().Select(p => p.Name.ToString());
+            //var ls = model.GetType().GetRuntimeFields().Select(p => p.Name.ToString());
+            var watchlist = _repo.WatchList.FindAll();
 
             foreach (var category in _movieCategery)
             {
@@ -49,8 +47,17 @@ namespace FlickFinder.Controllers
                 if (response.IsSuccessStatusCode)
                 {
                     var data = await response.Content.ReadAsStringAsync();
-                    MovieResult movie = JsonConvert.DeserializeObject<MovieResult>(data);
+                    MovieResultDTO movie = JsonConvert.DeserializeObject<MovieResultDTO>(data);
                     var m = model.GetType().GetProperty(category.PropName);
+
+                    if (User.Identity.IsAuthenticated)
+                    {
+                        for (int i = 0; i < movie.results.Length; i++)
+                        {
+                            if (watchlist.FirstOrDefault(w => w.MovieId == movie.results[i].MovieId && w.UserName == User.Identity.Name) != null)
+                                movie.results[i].IsInWatchList = true;
+                        }
+                    }
                     m.SetValue(model, movie.results);
                 }
             }
@@ -64,11 +71,5 @@ namespace FlickFinder.Controllers
             return $"https://api.themoviedb.org/3/{category}?api_key={apikey}";
         }
 
-    }
-
-    public class MovieResult
-    {
-        public int page { get; set; }
-        public Movie[] results { get; set; }
     }
 }

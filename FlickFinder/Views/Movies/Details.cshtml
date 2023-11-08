@@ -1,42 +1,67 @@
-﻿@model Movie
+﻿@model MovieDetailsViewModel
 
 @{
-    ViewData["Title"] = Model.Title;
+    ViewData["Title"] = Model.Movie.Title;
+    ViewData["Id"] = 0;
+    var path = $"{Context.Request.Host.Value}/movies/details/{Model.Movie.MovieId}/{@HttpUtility.UrlEncode(Model.Movie.Title)}";
 }
+
 <div class="my-5">
-    <a class="btn btn-warning" asp-action="Index" asp-controller="Home" asp-route-id="@Model.Title">Back to List</a>
+    <a class="btn btn-warning" asp-action="Index" asp-controller="Home"><i class="fa-solid fa-backward pe-2"></i>Back to home</a>
 </div>
 <div class="d-flex details-movie-card rounded-3 my-5">
-    <img src="@Model.Poster" alt="@Model.Title" class="rounded-start-3" />
+    <img src="@Model.Movie.Poster" alt="@Model.Movie.Title" class="rounded-start-3" />
     <div class="m-4">
-        <h1>@Model.Title</h1>
+        <h1>@Model.Movie.Title</h1>
         <div class="text-muted">
-            <span class="border-1 border-light rounded-3">@Model.Rated</span> |
-            <span>@Model.Released</span> |
-            <span>@Model.Runtime</span> |
-            <span>@Model.Genre</span>
+            <span class="border-1 border-light rounded-3">@Model.Movie.Rated</span> |
+            <span>@Model.Movie.Released</span> |
+            <span>@Model.Movie.Runtime mins</span> |
+            <span>@DateTime.Parse(Model.Movie.Year).Year</span> |
+            <span>@Model.Movie.Genre</span>
         </div>
         <div class="text-warning my-3">
-            @if (Model.Rating != "N/A" && Model.Rating != null)
+            @if (Model.Movie.Rating != "N/A" && Model.Movie.Rating != null)
             {
-                @for (int i = 0; i < Convert.ToInt32(Math.Round(double.Parse(Model.Rating))); i++)
+                @for (int i = 0; i < Convert.ToInt32(Math.Round(double.Parse(Model.Movie.Rating))); i++)
                 {
                     <i class="fa-solid fa-star "></i>
-                }@for (int i = 0; i < 10 - Convert.ToInt32(Math.Round(double.Parse(Model.Rating))); i++)
+                }@for (int i = 0; i < 10 - Convert.ToInt32(Math.Round(double.Parse(Model.Movie.Rating))); i++)
                 {
                     <i class="fa-regular fa-star"></i>
                 }
             }
+            <span class="text-muted ms-2">@Model.Movie.Rating.ToString() / 10</span>
         </div>
-        <p>@Model.Plot</p>
+        <p>@Model.Movie.Plot</p>
         <div class="text-muted">
-        <p class="mt-3 mb-0">Director: @Model.Director</p>
-        <p class="">Actors: @Model.Actors</p>
+            <p class="mt-3 mb-0">Director: @Model.Movie.Director</p>
+            <p class="">Actors: @Model.Movie.Actors</p>
         </div>
         <div class="mt-4">
-            <a class="btn btn-outline-warning" asp-action="Add" asp-controller="WatchList" asp-route-id="@Model.MovieId"><i class="fa-solid fa-bookmark"></i> Add to WatchList</a>
-            <a class="btn btn-outline-warning" asp-action="Index"><i class="fa-solid fa-heart"></i></a>
-            <a class="btn btn-outline-warning" asp-action="Index"><i class="fa-solid fa-share"></i></a>
+            <a class="btn @(Model.Movie.IsInWatchList ? "btn-warning" :"btn-outline-warning" )" asp-action="Add" asp-controller="WatchList" asp-route-id="@Model.Movie.MovieId"><i class="fa-solid fa-bookmark"></i> Add to WatchList</a>
+            @*<a class="btn btn-outline-warning" asp-action="Index"><i class="fa-solid fa-heart"></i></a>*@
+            <button class="btn btn-outline-warning" title="Share" asp-action="Index" onclick="copyPath()">
+                <i class="fa-solid fa-share"></i><span class="d-none" id="copyPath">@path</span>
+            </button>
+        </div>
+        <div class="w-100 mt-5 details-nav-tabs">
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item details-button" role="presentation">
+                    <button class="nav-link active" id="similar-tab" data-bs-toggle="tab" data-bs-target="#similar" type="button" role="tab" aria-controls="similar" aria-selected="true">Similar</button>
+                </li>
+                <li class="nav-item details-button" role="presentation">
+                    <button class="nav-link" id="recommendations-tab" data-bs-toggle="tab" data-bs-target="#recommendations" type="button" role="tab" aria-controls="recommendations" aria-selected="true">Recommendations</button>
+                </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="similar" role="tabpanel" aria-labelledby="similar-tab">
+                    @await Html.PartialAsync("_MovieCarousel", Model.Similar,  new ViewDataDictionary(ViewData) { { "Id2", ViewData["Id"] = "c2"}})
+                </div>
+                <div class="tab-pane fade" id="recommendations" role="tabpanel" aria-labelledby="recommendations-tab">
+                    @await Html.PartialAsync("_MovieCarousel", Model.Recommendations,  new ViewDataDictionary(ViewData) { { "Id1", ViewData["Id"] = "c1"}})
+                </div>
+            </div>
         </div>
     </div>
 </div>

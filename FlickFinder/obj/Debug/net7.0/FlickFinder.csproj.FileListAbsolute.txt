@@ -282,3 +282,8 @@ C:\Users\tumel\OneDrive\Desktop\Projects\FlickFinder\FlickFinder\bin\Debug\net7.
 C:\Users\tumel\OneDrive\Desktop\Projects\FlickFinder\FlickFinder\bin\Debug\net7.0\Microsoft.Extensions.Identity.Core.dll
 C:\Users\tumel\OneDrive\Desktop\Projects\FlickFinder\FlickFinder\bin\Debug\net7.0\Microsoft.Extensions.Identity.Stores.dll
 C:\Users\tumel\OneDrive\Desktop\Projects\FlickFinder\FlickFinder\bin\Debug\net7.0\Microsoft.Extensions.Options.dll
+C:\Users\tumel\OneDrive\Desktop\Projects\FlickFinder\FlickFinder\bin\Debug\net7.0\BouncyCastle.Cryptography.dll
+C:\Users\tumel\OneDrive\Desktop\Projects\FlickFinder\FlickFinder\bin\Debug\net7.0\MailKit.dll
+C:\Users\tumel\OneDrive\Desktop\Projects\FlickFinder\FlickFinder\bin\Debug\net7.0\MimeKit.dll
+C:\Users\tumel\OneDrive\Desktop\Projects\FlickFinder\FlickFinder\bin\Debug\net7.0\System.Security.Cryptography.Pkcs.dll
+C:\Users\tumel\OneDrive\Desktop\Projects\FlickFinder\FlickFinder\bin\Debug\net7.0\runtimes\win\lib\net7.0\System.Security.Cryptography.Pkcs.dll

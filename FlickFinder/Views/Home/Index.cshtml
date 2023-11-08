@@ -5,9 +5,6 @@
     ViewData["Id"] = 0;
 }
 
-
-@*<partial name="_SearchBar"></partial>*@
-
 @if (TempData["Message"] != null)
 {
     <div class="alert alert-warning alert-dismissible" role="alert">
@@ -23,22 +20,10 @@
     @await Html.PartialAsync("_MovieCarousel", Model.NowPlaying,  new ViewDataDictionary(ViewData) { { "Id1", ViewData["Id"] = "c1"}})
 </div>
 <div class="mb-5">
-    <h3 class="mt-5">Trending</h3>
+    <h3 class="mt-5">Trending Top 20</h3>
     @await Html.PartialAsync("_MovieCarousel", Model.Trending, new ViewDataDictionary(ViewData) { { "Id2", ViewData["Id"] = "c2"}})
 </div>
-
-<div class="mb-5">
-    <h3 class="mt-5">Popular</h3>
-    @await Html.PartialAsync("_MovieCarousel", Model.Popular,  new ViewDataDictionary(ViewData) { { "Id3", ViewData["Id"] = "c3"}})
-</div>
-<div class="mb-5">
-    <h3 class="mt-5">Upcoming</h3>
-    @await Html.PartialAsync("_MovieCarousel", Model.Upcoming,  new ViewDataDictionary(ViewData) { { "Id4", ViewData["Id"] = "c4"}})
-</div>
-
 <div class="mb-5">
     <h3 class="mt-5 ">Top Rated</h3>
-    @await Html.PartialAsync("_MovieCarousel", Model.TopRated,  new ViewDataDictionary(ViewData) { { "Id5", ViewData["Id"] = "c5"}})
+    @await Html.PartialAsync("_MovieCarousel", Model.TopRated,  new ViewDataDictionary(ViewData) { { "Id3", ViewData["Id"] = "c3"}})
 </div>
-
-

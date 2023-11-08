@@ -5,8 +5,15 @@
     ViewData["Title"] = "Sign In";
 }
 
-<div class="m-auto row text-light mb-5 border-1 rounded-3 bg-black w-75">
+<div class="m-auto row text-light mb-5 border-1 rounded-3 bg-black w-75 position-relative">
     <div class="col-sm-6 px-5">
+        @if (TempData["Message"] != null)
+        {
+            <div class="alert alert-success alert-dismissible fade show alert-login" role="alert">
+                <i class="fa-solid fa-check"></i>
+                @TempData["Message"]
+            </div>
+        }
         <div class="text-center">
             <h2 class="my-2">Welcome back</h2>
             <p class="mb-3 ">Please enter your credentials</p>
@@ -21,16 +28,18 @@
             </div>
             <div class="mb-3">
                 <label class="form-label" asp-for="Password"></label>
-                <input class="form-control w-100" asp-for="Password" type="text" />
+                <input class="form-control w-100" asp-for="Password" type="password" />
                 <span class="text-danger" asp-validation-for="Password"></span>
             </div>
-            <div class="mb-3 d-flex align-content-between">
-                <input class="form-check-inline" type="checkbox" asp-for="RememberMe"/><span>Remember me</span>
-                <a class="ms-3">Forgot password?</a>
+            <div class="mb-3 d-flex justify-content-between">
+                <div>
+                    <input class="me-1" type="checkbox" asp-for="RememberMe" /><span>Remember me</span>
+                </div>
+                <a class="text-warning text-decoration-none ms-2" asp-action="ForgotPassword">Forgot password?</a>
             </div>
             <div class="my-5">
                 <button type="submit" class="btn btn-warning mb-5 w-100">Sign in</button>
-                <p>Don't have an account?<a asp-controller="Account" asp-action="Register">Sign up for free</a></p>
+                <p>Don't have an account?<a class="text-warning text-decoration-none" asp-controller="Account" asp-action="Register"> Sign up for free</a></p>
             </div>
         </form>
     </div>

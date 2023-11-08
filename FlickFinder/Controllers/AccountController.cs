@@ -1,9 +1,10 @@
 ﻿using FlickFinder.Models;
 using FlickFinder.Models.ViewModels;
+using FlickFinder.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System.Web;
 
 namespace FlickFinder.Controllers
 {
@@ -12,12 +13,18 @@ namespace FlickFinder.Controllers
     {
         private readonly UserManager<AppUser> _userManager;
         private readonly SignInManager<AppUser> _signInManager;
+        private readonly IMailService _mailService;
+        private readonly IConfiguration _config;
 
         public AccountController(UserManager<AppUser> userManager,
-                                 SignInManager<AppUser> signInManager)
+                                 SignInManager<AppUser> signInManager,
+                                 IMailService mailService,
+                                 IConfiguration config)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _mailService = mailService;
+            _config = config;
         }
 
         [AllowAnonymous]
@@ -76,6 +83,18 @@ namespace FlickFinder.Controllers
 
                 if (result.Succeeded)
                 {
+                    try
+                    {
+                        var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                        Dictionary<string, string> emailOptions = new Dictionary<string, string>
+                        {
+                            { "username", user.UserName },
+                            { "link",Request.Host.Value + $"/Account/VerifyEmail?userId={user.Id}&token={HttpUtility.UrlEncode(token)}" }
+                        };
+                        await _mailService.SendMailAsync(registerModel.Email, "Welcome to FlickFinder", "WelcomeEmail", emailOptions);
+                    }
+                    catch (Exception) { }
+
                     return RedirectToAction("LogIn");
                 }
                 else
@@ -88,6 +107,107 @@ namespace FlickFinder.Controllers
             }
             return View(registerModel);
         }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public IActionResult ForgotPassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<IActionResult> ForgotPassword(ForgotPassword model)
+        {
+
+            if (ModelState.IsValid)
+            {
+                var user = await _userManager.FindByEmailAsync(model.Email);
+                if (user != null)
+                {
+                    try
+                    {
+                        var token = await _userManager.GeneratePasswordResetTokenAsync(user);
+                        Dictionary<string, string> emailOptions = new Dictionary<string, string>
+                        {
+                            { "username", user.UserName },
+                            { "link", Request.Host.Value + $"/Account/ResetPassword?userId={user.Id}&token={HttpUtility.UrlEncode(token)}" }
+                        };
+                        await _mailService.SendMailAsync(user.Email, "Reset Password", "ForgotPassword", emailOptions);
+                        TempData["Message"] = $"Reset email was sent to {user.Email}";
+                        return View();
+                    }
+                    catch (Exception)
+                    {}
+
+                }
+                ModelState.AddModelError("", "Invalid. Email not regestered");
+            }
+            return View();
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public IActionResult ResetPassword(string userId, string token)
+        {
+            return View(new ResetPassword() { Token = token, UserId = userId });
+        }
+
+
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<IActionResult> ResetPassword(ResetPassword model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await _userManager.FindByIdAsync(model.UserId);
+                if (user != null)
+                {
+                    var result = await _userManager.ResetPasswordAsync(user, model.Token, model.ConfirmPassword);
+                    if (result.Succeeded)
+                    {
+                        TempData["Message"] = "Successfully reset password";
+                        return RedirectToAction("LogIn");
+                    }
+                }
+            }
+            return View(model);
+        }
+
+
+        [HttpGet]
+        [AllowAnonymous]
+        public IActionResult VerifyEmail(string userId, string token)
+        {
+            return View(new ConfirmEmail { UserId = userId, Token = token });
+        }
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<IActionResult> VerifyEmail(ConfirmEmail model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await _userManager.FindByIdAsync(model.UserId);
+                if (user.EmailConfirmed)
+                {
+                    TempData["Message"] = "Email already been verified";
+                    return RedirectToAction("LogIn");
+                }
+                if (user != null)
+                {
+                    var token = model.Token;
+                    var result = await _userManager.ConfirmEmailAsync(user, token);
+                    if (result.Succeeded)
+                    {
+                        TempData["Message"] = "Email verified successfully";
+                        return RedirectToAction("LogIn");
+                    }
+                    TempData["Message"] = "Something went wrong😐.";
+                }
+            }
+            return View(model);
+        }
+
 
         [HttpPost]
         [AllowAnonymous]

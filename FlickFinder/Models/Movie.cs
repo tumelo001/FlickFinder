@@ -82,5 +82,8 @@ namespace FlickFinder.Models
 
         public string Slug => Title?.Replace(" ", "+").ToLower() + "+" + Year.ToLower();
 
+        public bool IsInWatchList { get; set; } = false;
+        public bool IsInFavourite { get; set; } = false;
+
     }
 }

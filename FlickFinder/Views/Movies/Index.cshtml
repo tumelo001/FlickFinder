@@ -3,8 +3,10 @@
 @{
     ViewData["Title"] = "Search Movies";
 }
-@*<partial name="_SearchBar"></partial>*@
-<h4 class="mt-5">Your search results: </h4>
+<div class="my-5 d-flex flex-row">
+    <a class="btn btn-warning" asp-action="Index" asp-controller="Home"><i class="fa-solid fa-backward pe-2"></i>Back to home</a>
+    <h4 class="ms-3 pt-1">Your search results: </h4>
+</div>
 <div class="row mt-5 d-flex justify-content-center">
     @{
         if (Model != null)
