@@ -6,11 +6,11 @@ FlickFinder is a movie recommendation app developed for learning purposes, with 
 
 ## Getting Started
 
-To access the FlickFinder app, visit [FlickFinder App](bongosupport-001-site2.atempurl.com/) (replace "your-app-url-here" with the actual URL). Please note that the app's hosting status may change, and if you encounter any issues accessing it, it may be temporarily down.
+To access the FlickFinder app, visit [FlickFinder App](bongosupport-001-site2.atempurl.com/). Please note that the app's hosting status may change, and if you encounter any issues accessing it, it may be temporarily down.
 
 ## Features
 
-1. **Search Movies:** Utilize an intuitive search bar powered by JavaScript to find movies based on titles, genres, or keywords.
+1. **Search Movies:** Utilize an intuitive search bar to find movies based on titles.
 
 2. **Personal Watchlist:** Enhance user experience by allowing them to add and remove movies from their personalized watchlists. The app follows the Repository Pattern for efficient data management.
 
@@ -25,7 +25,7 @@ To access the FlickFinder app, visit [FlickFinder App](bongosupport-001-site2.at
 ## How to Use
 
 1. **Search Movies:**
-   - Use the dynamic search bar to find movies based on titles, genres, or keywords.
+   - Use the dynamic search bar to find movies based on titles.
 
 2. **Personal Watchlist:**
    - Sign in or register to access and manage your personal watchlist.
@@ -40,23 +40,27 @@ To access the FlickFinder app, visit [FlickFinder App](bongosupport-001-site2.at
 
 5. **User Authentication:**
    - Sign in using your registered email and password to access your personalized watchlist.
-   - 
+   
 ## Website Snippets
-### Snippet
-![before](./EndPoints.png)
-### Snippet
-![before](./EndPoints.png)
-### Snippet
-![before](./EndPoints.png)
-### Snippet
-![before](./EndPoints.png)
+### Login Page
+![before](./Login.png)
+### Welcome Email
+![before](./WelcomeEmail.png)
 ### Home Page
-## Technologies Used
+![before](./Home.png)
+### Search Result Page
+![before](./Search.png)
+### Details Page
+![before](./Details.png)
+
+
+## Technologies used to mention few
 
 - **Frontend:**
   - JavaScript
   - Bootstrap 5
   - CSS3
+  - HTML5
 
 - **Backend:**
   - ASP.NET MVC
@@ -78,10 +82,5 @@ As of November 2023, the app is hosted, but the hosting status may change in the
 
 Contributions are welcome! If you have ideas for improvements, open an issue or submit a pull request.
 
-## License
-
-This project is licensed under the [MIT License](LICENSE.md).
-
-Feel free to explore, learn, and contribute to the project! If you have any questions or encounter issues, please create an issue on the [GitHub repository](https://github.com/your-username/your-repo).
 
 Happy movie exploring! 🎬
