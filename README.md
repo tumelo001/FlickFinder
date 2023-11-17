@@ -2,7 +2,7 @@
 
 ## Overview
 
-FlickFinder is a movie recommendation app developed for learning purposes, with a focus on honing API integration skills and improving proficiency in ASP.NET MVC. The app utilizes two main APIs - The Movie Database (TMDb) API and Open Movie Database (OMDb) API. It allows users to explore a wide range of movies, add and remove movies from a personal watchlist, and stay updated on trending, new releases, and top-rated movies. Additionally, users can register and sign in to access their personalized watchlists. The app incorporates email services for welcoming users upon registration and verifying their emails for password reset purposes.
+FlickFinder is a movie recommendation app developed for learning purposes, with a focus on improving API integration skills and improving proficiency in ASP.NET MVC. The app utilizes two main APIs - The Movie Database (TMDb) API and Open Movie Database (OMDb) API. It allows users to explore a wide range of movies, add and remove movies from a personal watchlist, and stay updated on trending, new releases, and top-rated movies. Additionally, users can register and sign in to access their personalized watchlists. The app incorporates email services for welcoming users upon registration and verifying their emails for password reset purposes.
 
 ## Getting Started
 
